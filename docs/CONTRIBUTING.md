@@ -140,6 +140,11 @@ git commit -m "[Docs] CONTRIBUTING.md 브랜치 전략 수정, 작업 흐름 예
 ```
 
 5. PR 본문에 `Closes #이슈번호` 또는 `Fixes #이슈번호`를 작성한다.
+Add a description
+...
+
+
+Closes #이슈번호
 
 
 
