@@ -33,17 +33,17 @@ GitHub Flow를 선택한 이유:
 브랜치 이름은 아래 형식을 사용한다.
 
 ```txt
-feature/<이름>-<작업요약>
-fix/<이름>-<수정요약>
-docs/<이름>-<문서요약>
+feature/<이슈번호>-<팀원명>-<작업요약>
+fix/<이슈번호>-<팀원명>-<수정요약>
+docs/<이슈번호>-<팀원명>-<문서요약>
 ```
 
 예시:
 
-- `feature/lee-string-utils`
-- `feature/park-team-note`
-- `docs/lim-contributing-guide`
-- `fix/son-readme-links`
+- `feature/1-lee-string-utils`
+- `feature/2-park-team-note`
+- `docs/3-lim-contributing-guide`
+- `fix/4-son-readme-links`
 
 규칙:
 
