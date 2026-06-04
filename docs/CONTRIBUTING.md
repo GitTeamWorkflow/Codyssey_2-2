@@ -4,11 +4,23 @@
 
 ## 1. 브랜치 전략
 
-우리 팀은 GitHub Flow를 사용한다.
+1. 브랜치 전략
 
-- `main`: 항상 실행 가능하고 제출 가능한 상태를 유지한다.
-- `feature/*`: 기능, 문서, 실습 단위 작업 브랜치로 사용한다.
-- `main`에는 직접 push하지 않고 Pull Request를 통해서만 병합한다.
+우리 팀은 GitHub Flow 기반의 브랜치 전략을 사용한다.
+
+main 브랜치는 항상 실행 가능하고 제출 가능한 상태를 유지하며, 모든 작업은 별도의 작업 브랜치에서 진행한다. 작업이 완료되면 Pull Request(PR)를 생성하고, 팀원 리뷰 및 최소 1명 이상의 Approve를 받은 뒤 main 브랜치에 병합한다.
+
+## 브랜치 종류
+
+| 브랜치          | 용도                            |
+| ------------ | ----------------------------- |
+| `main`       | 최종 결과물이 반영되는 기본 브랜치           |
+| `feature/*`  | 새로운 기능 추가 또는 실습 단위 작업 브랜치     |
+| `docs/*`     | README, 보고서, 팀 문서 등 문서 작업 브랜치 |
+| `fix/*`      | 오류 수정 또는 기존 기능 수정 브랜치         |
+| `refactor/*` | 기능 변화 없이 코드 구조 개선 작업 브랜치      |
+| `chore/*`    | 설정 파일, 폴더 구조, 의존성 등 기타 작업 브랜치 |
+
 
 GitHub Flow를 선택한 이유:
 
@@ -109,9 +121,24 @@ docs/<이름>-<문서요약>
 
 ### 작업 흐름:
 1. Issue를 생성한다.
+예시 : [Docs] CONTRIBUTING.md 브랜치 전략, 작업 흐름 예시 업데이트 #7
+
 2. Issue 번호를 확인한다.
+Issue 생성시 Git에서 Issue 번호를 부여한다.
+
 3. `feature/<이름>-<작업요약>` 브랜치를 만든다.
+```bash
+git switch main
+git pull origin main
+git switch -c docs/7-docs-contributing-브랜치-전략-작업-흐름-예시-업데이트
+```
+
 4. 작업 후 커밋한다.
+```bash
+git add CONTRIBUTING.md 
+git commit -m "[Docs] CONTRIBUTING.md 브랜치 전략 수정, 작업 흐름 예시 업데이트"
+```
+
 5. PR 본문에 `Closes #이슈번호` 또는 `Fixes #이슈번호`를 작성한다.
 
 
