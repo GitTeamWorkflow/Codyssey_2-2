@@ -5,5 +5,5 @@ def calculate(a, b):
     return result
 
 
-print("Calculator Program")
-print(calculate(10, 5))
+print("Calculator Program Start!")
+print(calculate(18, 122))
