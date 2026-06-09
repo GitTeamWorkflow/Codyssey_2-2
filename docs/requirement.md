@@ -62,9 +62,8 @@ Git은 단순한 버전 관리 도구가 아니라, 팀 협업의 핵심 인프�
     - 옵션 B(대체): 개인 저장소 생성 후 Collaborator 초대  
 - 기본 폴더/파일을 구성한다.  
     - `README.md`  
-    - `docs/` (문서)  
-    - `src/` (코드 또는 예시 파일)  
-    - `team/` (팀원별 소개 문서 선택 시 사용)  
+    - `docs/` (문서)    
+    - `team/` (충돌 실습을 위한 폴더)  
 - Branch Protection Rule을 `main` 브랜치에 설정한다.  
     - `main` 직접 push 금지  
     - PR을 통한 병합만 허용  
