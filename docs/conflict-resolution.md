@@ -117,23 +117,23 @@ git commit -m "fix: resolve readme index conflict"
 
 ### 참여자
 
-- 작성자: Lee
+- 작성자: Park
 - 리뷰어/공동 수정자: Son
 
 ### 관련 브랜치
 
-- 기준 브랜치: `main`
-- 작업 브랜치 A: `feature/lee-team-page`
-- 작업 브랜치 B: `feature/son-team-page-update`
+- 기준 브랜치: `feat/29-park-conflict-simulation`
+- 작업 브랜치 A: `feat/29-park-conflict-simulation`
+- 작업 브랜치 B: `feat/29-son-conflict-simulation`
 
 ### 관련 파일
 
-- 기존 파일: `practice-notes/team/test.html`
-- 이동 후 파일: `practice-notes/team/index.html`
+- 기존 파일: `practice-notes/team/calculator.py`
+- 이동 후 파일: `practice-notes/team/calculator_rename.py`
 
 ### 상황
 
-Lee는 팀 소개 HTML 파일 이름을 `test.html`에서 `index.html`로 변경했다. 동시에 Son은 기존 `test.html` 파일의 본문 내용을 수정했다. 한쪽은 파일 이름을 바꾸고 다른 한쪽은 기존 파일 내용을 바꿨기 때문에 병합 과정에서 비자명 충돌이 발생했다.
+Park은 main을 기준으로 `calculator.py`에 새로운 기능 추가를 위해 `feat/29-park-conflict-simulation` 브랜치를 만들었다. 공동 작업자인 Son은 `feat/29-park-conflict-simulation` 브랜치를 기준으로 `feat/29-son-conflict-simulation` 브랜치를 만들고 파일 이름을 `calculator_rename.py`로 변경하고 mulitple 함수를 추가했다.
 
 ### 충돌 원인
 
@@ -143,32 +143,33 @@ Lee는 팀 소개 HTML 파일 이름을 `test.html`에서 `index.html`로 변경
 
 ### 해결 방향
 
-최종 파일명은 `index.html`로 정하고, Son이 수정한 본문 내용은 새 파일에 반영하기로 했다. `test.html`은 임시 이름이므로 최종 결과물에는 남기지 않는다.
+최종 파일명은 `calculator_rename.py`로 정하고, Son이 수정한 본문 내용은 새 파일에 반영하기로 했다. `calculator.py`는 최종 결과물에는 남기지 않는다.
 
 ### 해결 절차
 
 1. `git status`로 rename/delete 또는 both modified 상태를 확인했다.
-2. `practice-notes/team/test.html`과 `practice-notes/team/index.html`의 내용을 비교했다.
-3. 최종 파일명은 `index.html`로 유지하기로 팀원끼리 합의했다.
-4. Son의 본문 수정 내용을 `index.html`에 반영했다.
-5. 더 이상 필요 없는 `test.html`은 추적 대상에서 제거했다.
-6. 브라우저 또는 파일 열람으로 HTML 내용이 깨지지 않는지 확인했다.
-7. `git add practice-notes/team/index.html` 후 충돌 해결 커밋을 생성했다.
+2. `practice-notes/team/calculator.py`과 `practice-notes/team/calculator_rename.py`의 내용을 비교했다.
+3. 최종 파일명은 `calculator_rename.py`로 유지하기로 팀원끼리 합의했다.
+4. Son의 본문 수정 내용을 `calculator_rename.py`에 반영했다.
+5. 더 이상 필요 없는 `calculator.py`은 추적 대상에서 제거했다.
+6. `git add practice-notes/team/calculator_rename.py` 후 충돌 해결 커밋을 생성했다.
 
 ### 사용한 명령어
 
 ```bash
-git switch feature/lee-team-page
-git merge main
-git status
-git diff
-git add practice-notes/team/index.html
-git commit -m "fix: resolve team page rename conflict"
+git switch feat/29-son-conflict-simulation
+git merge feat/29-park-conflict-simulation
+
+rm -f calculator.py 
+git add calculator_rename.py 
+git add calculator.py # rename은 삭제 후 생성 이므로 git status에서 둘다 표시됨
+git commit -m "refactor: rename caculator, update logic"
+git push
 ```
 
 ### 결과
 
-팀 소개 페이지의 최종 파일명을 `index.html`로 정리했고, 기존 파일에 작성된 본문 변경사항도 잃지 않고 보존했다.
+계산기 파일의 최종 파일명을 `calculator_rename.py`로 정리했고, 기존 파일에 작성된 본문 변경사항도 잃지 않고 보존했다.
 
 ### 배운 점
 
@@ -176,18 +177,77 @@ git commit -m "fix: resolve team page rename conflict"
 - rename 작업을 할 때는 PR 설명에 파일 이동 이유를 명확히 적어야 리뷰어가 변경 의도를 이해하기 쉽다.
 - 파일 이동 PR은 가능하면 내용 수정과 분리하는 편이 충돌 가능성을 줄인다.
 
+### 실행 흐름
+1. feat:/29-park-conflict-simulator 브랜치 생성 (부모 : main)
+2. caculator.py 간단한 수정 후 push
+3. feat:/29-son-conflict-simulator 브랜치 생성 (부모: feat:/29-park-conflict-simulator)
+4. caculator.py 내용 수정 및 rename (caculator.py -> caculator_rename.py) 후 push
+5. pr 생성 후 충돌 발생 확인
+6. feat:/29-son-conflict-simulator 에서 부모를 merge
+7. caculator.py 삭제 (caculator_rename.py 남김)
+8. pr 요구사항 수정 후 push
+9. pr 생성 후 feat:/29-park-conflict-simulator 에 merge
+10. feat:/29-park-conflict-simulator 에서 fetch 후 pull
+11. pr 생성 후 main에 merge
+
 ## 충돌 해결 체크리스트
 
 충돌이 발생하면 아래 항목을 확인한다.
 
 - [ ] 어떤 브랜치끼리 충돌이 났는가?
+    - 기준 브랜치:feat/29-park-conflict-simulation 
+    - 작업 브랜치:feat/29-son-conflict-simulation
+
 - [ ] 어떤 파일에서 충돌이 났는가?
+    - 기존 파일: `practice-notes/team/calculator.py`
+    - 이동 후 파일: `practice-notes/team/calculator_rename.py`
+
 - [ ] 충돌 마커를 모두 제거했는가?
+    - 네
+
 - [ ] 양쪽 변경 의도를 확인했는가?
+    - Park: calculator.py 파일에 뺄셈 함수 추가
+    - Son: calculator.py 파일명 변경, 곱셈 함수 추가
+    - 최종 파일명은 calculator_rename.py로 유지하며 뺄셈 함수와 곱셈 함수를 추가함.
+
 - [ ] 필요한 변경사항을 모두 보존했는가?
+    - 네
+
 - [ ] 파일 경로와 링크가 실제 구조와 맞는가?
+    - 네
+```bash
+pbk@practice-notes/team# git branch
+  docs/28-park-fix-docs
+* feat/29-park-conflict-simulation
+  feat/29-son-conflict-simulation
+  main
+pbk@practice-notes/team# pwd
+/Users/bumkyu8425/Codyssey_2-2/practice-notes/team
+```
+
+```bash
+pbk@practice-notes/team# git branch
+  docs/28-park-fix-docs
+  feat/29-park-conflict-simulation
+* feat/29-son-conflict-simulation
+  main
+pbk@practice-notes/team# pwd
+/Users/bumkyu8425/Codyssey_2-2/practice-notes/team
+```
 - [ ] `git status`에서 unmerged 상태가 사라졌는가?
+    - 네
+```bash
+pbk@practice-notes/team# git switch feat/29-park-conflict-simulation
+Switched to branch 'feat/29-son-conflict-simulation'
+Your branch is up to date with 'origin/feat/29-son-conflict-simulation'.
+
+pbk@practice-notes/team# git status
+On branch feat/29-son-conflict-simulation
+Your branch is up to date with 'origin/feat/29-son-conflict-simulation'.
+```
+
 - [ ] PR 댓글 또는 문서에 해결 과정을 남겼는가?
+    - 네
 
 ## 충돌 예방 규칙
 
