@@ -33,45 +33,41 @@ Date:   Wed Jun 10 18:42:22 2026 +0900
 ```
 3. 직전 commit을 revert 한다.
 ```bash
-pbk@park/04_command_simulation# git revert HEAD~1
+pbk@park/04_command_simulation# git revert 83944ce9ef6848c9b8522a8d6e0d532d9221214d
+[feat/37-park-command-simulation e46cbac] Revert "feat: revert test"
+ 1 file changed, 1 deletion(-)
 ```
-4. vim 에서 저장
+4. test.txt 확인
 ```bash
-Revert "feat: add reset scenario3"
-
-This reverts commit d841f2e62814add91b8c6d304b7eabc045026aa0.
-
-# Please enter the commit message for your changes. Lines starting
-# with '#' will be ignored, and an empty message aborts the commit.
-#
-# On branch feat/37-park-command-simulation
-# Your branch is ahead of 'origin/feat/37-park-command-simulation' by 1 commit.
-#   (use "git push" to publish your local commits)
-#
-# Changes to be committed:
-#       modified:   practice-notes/park/04_command_simulation/reset.md
-#
-# Changes not staged for commit:
-#       modified:   practice-notes/park/04_command_simulation/revert.md
-:wq
+pbk@park/04_command_simulation# cat test.txt
+test
+test1
 ```
 5. git status 확인
 ```bash
 pbk@park/04_command_simulation# git status
 On branch feat/37-park-command-simulation
-Your branch is ahead of 'origin/feat/37-park-command-simulation' by 2 commits.
+Your branch is ahead of 'origin/feat/37-park-command-simulation' by 4 commits.
+# revert는 새로운 commit을 만들기 때문에 commit 수가 늘어난다.
   (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   revert.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
 ```
 6. git log 확인
 ```bash
 pbk@park/04_command_simulation# git log
-commit a423ba4961e3d001a3d6a5c0ae3e70c2e529b64f (HEAD -> feat/37-park-command-simulation)
+commit e46cbacddb3fd28f41de5b020b9dbe2aba4d1037 (HEAD -> feat/37-park-command-simulation)
 Author: pbk98 <bumkyu8425@naver.com>
-Date:   Wed Jun 10 19:09:18 2026 +0900
+Date:   Wed Jun 10 19:22:31 2026 +0900
 
-    Revert "feat: add reset scenario3"
+    Revert "feat: revert test"
     
-    This reverts commit d841f2e62814add91b8c6d304b7eabc045026aa0.
+    This reverts commit 83944ce9ef6848c9b8522a8d6e0d532d9221214d.
 
 commit 83944ce9ef6848c9b8522a8d6e0d532d9221214d
 Author: pbk98 <bumkyu8425@naver.com>
@@ -85,3 +81,7 @@ Date:   Wed Jun 10 18:42:22 2026 +0900
 
     feat: add reset scenario3
 ```
+
+## 결론
+- revert는 ***변경사항을 취소하려는 commit id(hash)***를 사용하여 되돌린다.
+- reset과 다르게 revert는 ***새로운 commit을 만들기 때문에*** commit 수가 늘어난다.
