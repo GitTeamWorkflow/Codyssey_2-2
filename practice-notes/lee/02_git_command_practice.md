@@ -24,16 +24,28 @@
 ### 목적
 가장 최근 커밋의 메시지 또는 커밋 내용을 수정한다.
 
-### 실습 상황
-커밋 메시지를 잘못 작성한 상태에서, 최근 커밋 메시지를 올바르게 수정한다.
+### 실습 흐름
+1. 파일 수정 후 커밋한다.
+2. 잘못 작성한 커밋 메시지를 확인한다.
+3. `git commit --amend`로 최근 커밋 메시지를 수정한다.
+4. 수정된 커밋 로그를 확인한다.
 
-### 실습 절차
+### 실습 명령어
 
 ```bash
+git status
 git add .
 git commit -m "docs: git pratice file"
+git log --oneline -1
 git commit --amend -m "feat: git practice file"
+git log --oneline -1
 ```
+
+### 캡처 포인트
+- 첫 커밋 직후 `git log --oneline -1`
+    ![alt text](commit.png)
+- amend 실행 후 다시 `git log --oneline -1`
+    ![alt text](amend_commit.png)
 
 ### 결과
 - 가장 최근 커밋 메시지가 수정된다.
@@ -41,7 +53,7 @@ git commit --amend -m "feat: git practice file"
 
 ### 정리
 - 아직 원격 저장소에 push하지 않은 최근 커밋을 정리할 때 유용하다.
-- 이미 공유된 커밋에 무분별하게 사용하면 히스토리 충돌을 유발할 수 있다.
+- 이미 공유된 커밋에는 신중하게 사용해야 한다.
 
 ---
 
@@ -50,23 +62,37 @@ git commit --amend -m "feat: git practice file"
 ### 목적
 최근 커밋을 취소하되, 변경 내용은 그대로 유지한다.
 
-### 실습 상황
-방금 만든 커밋을 취소하고, 수정한 파일은 유지한 채 다시 커밋하고 싶다.
+### 실습 흐름
+1. 파일 수정 후 새 커밋을 만든다.
+2. 최근 커밋 로그를 확인한다.
+3. `git reset --soft HEAD~1`로 최근 커밋을 취소한다.
+4. `git status`로 변경 내용이 남아 있는지 확인한다.
 
-### 실습 절차
+### 실습 명령어
 
 ```bash
 git add .
 git commit -m "docs: add reset practice"
+git log --oneline -2
 git reset --soft HEAD~1
+git status
+git log --oneline -2
 ```
+
+### 캡처 포인트
+- reset 전 `git log --oneline -2`
+    ![alt text](before_reset.png)
+- reset 후 `git status`
+    ![alt text](after_status.png)
+- reset 후 `git log --oneline -2`
+    ![alt text](after_reset.png)
 
 ### 결과
 - 가장 최근 커밋은 취소된다.
 - 파일 수정 내용은 삭제되지 않고 스테이징 상태로 남는다.
 
 ### 정리
-- 커밋 메시지를 다시 쓰거나, 커밋 단위를 나누고 싶을 때 적합하다.
+- 커밋 메시지를 다시 쓰거나 커밋 단위를 나누고 싶을 때 적합하다.
 - 아직 원격에 push하지 않은 로컬 커밋 정리에 주로 사용한다.
 
 ---
@@ -74,16 +100,19 @@ git reset --soft HEAD~1
 ## 3. `git revert`
 
 ### 목적
-이미 생성된 특정 커밋의 변경을 반대로 적용하는 새 커밋을 만든다.
+이미 생성된 특정 커밋은 그대로 남아있고, 그걸 취소하는 효과를 가진 새 새 커밋을 만든다.
 
-### 실습 상황
-이미 push된 커밋을 안전하게 취소해야 한다.
+### 실습 흐름
+1. 취소 대상 커밋을 확인한다.
+2. `git revert`를 실행한다.
+3. 되돌림 커밋이 새로 생성되었는지 확인한다.
 
-### 실습 절차
+### 실습 명령어
 
 ```bash
-git log --oneline
+git log --oneline -3
 git revert <커밋해시>
+git log --oneline -3
 ```
 
 예시:
@@ -91,6 +120,10 @@ git revert <커밋해시>
 ```bash
 git revert abc1234
 ```
+
+### 캡처 포인트
+- revert 전 `git log --oneline -3`
+- revert 후 `git log --oneline -3`
 
 ### 결과
 - 기존 커밋은 유지된다.
@@ -107,15 +140,25 @@ git revert abc1234
 ### 목적
 현재 작업 중인 변경 사항을 임시로 보관한다.
 
-### 실습 상황
-작업 중이지만 아직 커밋하고 싶지 않은 상태에서 다른 브랜치로 이동해야 한다.
+### 실습 흐름
+1. 파일을 수정한 뒤 아직 커밋하지 않은 상태를 만든다.
+2. `git status`로 변경 파일을 확인한다.
+3. `git stash`로 작업 내용을 임시 저장한다.
+4. 다시 `git status`로 작업 디렉터리가 정리되었는지 확인한다.
 
-### 실습 절차
+### 실습 명령어
 
 ```bash
+git status
 git stash
-git switch main
+git status
+git stash list
 ```
+
+### 캡처 포인트
+- stash 전 `git status`
+- stash 후 `git status`
+- stash 후 `git stash list`
 
 ### 결과
 - 현재 작업 내용이 stash에 저장된다.
@@ -132,15 +175,25 @@ git switch main
 ### 목적
 stash에 임시 저장한 작업 내용을 다시 복원한다.
 
-### 실습 상황
-다른 브랜치에서 작업을 마친 뒤, 원래 작업하던 내용을 다시 가져온다.
+### 실습 흐름
+1. stash 목록이 있는 상태를 확인한다.
+2. `git stash pop`으로 가장 최근 stash를 복원한다.
+3. `git status`로 복원된 파일을 확인한다.
+4. `git stash list`로 stash가 제거되었는지 확인한다.
 
-### 실습 절차
+### 실습 명령어
 
 ```bash
-git switch feature/34-lee-git-command-practice
+git stash list
 git stash pop
+git status
+git stash list
 ```
+
+### 캡처 포인트
+- pop 전 `git stash list`
+- pop 후 `git status`
+- pop 후 `git stash list`
 
 ### 결과
 - 가장 최근 stash 내용이 작업 디렉터리에 복원된다.
@@ -148,14 +201,13 @@ git stash pop
 
 ### 정리
 - 이전 작업을 이어서 진행할 때 사용한다.
-- 충돌이 발생할 수 있으므로 복원 후 변경 내용을 반드시 확인해야 한다.
+- 복원 후 변경 내용과 충돌 여부를 확인해야 한다.
 
 ---
 
-
 ## 6. 실습 후 느낀 점
 
-- `amend`와 `reset`은 로컬 커밋을 정리할 때 유용하다.
-- `revert`는 협업 중 이미 공유된 커밋을 안전하게 되돌릴 때 적합하다.
-- `stash`는 작업을 잠시 보관하고 다른 작업으로 전환할 때 편리하다.
-- 협업 환경에서는 명령어 자체보다, 언제 어떤 명령을 선택해야 하는지 판단하는 것이 중요하다.
+- `git log`, `git status`, `git stash list`를 함께 확인하면 명령 전후 차이를 이해하기 쉽다.
+- `amend`와 `reset`은 로컬 커밋 정리에 적합하다.
+- `revert`는 공유된 커밋을 안전하게 취소할 때 적합하다.
+- `stash`와 `stash pop`은 작업 전환 상황에서 매우 유용하다.
