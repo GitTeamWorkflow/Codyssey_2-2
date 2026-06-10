@@ -103,7 +103,7 @@ git log --oneline -2
 이미 생성된 특정 커밋은 그대로 남아있고, 그걸 취소하는 효과를 가진 새 새 커밋을 만든다.
 
 ### 실습 흐름
-1. 취소 대상 커밋을 확인한다.
+1. 취소 대상 커밋을 확인한다..
 2. `git revert`를 실행한다.
 3. 되돌림 커밋이 새로 생성되었는지 확인한다.
 
@@ -112,18 +112,23 @@ git log --oneline -2
 ```bash
 git log --oneline -3
 git revert <커밋해시>
+# revert 후 commit 저장 (:wq)
 git log --oneline -3
 ```
 
 예시:
 
 ```bash
-git revert abc1234
+git revert <커밋해시>
 ```
 
 ### 캡처 포인트
 - revert 전 `git log --oneline -3`
-- revert 후 `git log --oneline -3`
+    ![alt text](before_revert.png)
+
+- revert 후 `git log --oneline -4`
+    ![alt text](before_revert_commit.png)
+    ![alt text](after_revert.png)
 
 ### 결과
 - 기존 커밋은 유지된다.
