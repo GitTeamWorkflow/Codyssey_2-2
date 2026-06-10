@@ -43,9 +43,10 @@ git log --oneline -1
 
 ### 캡처 포인트
 - 첫 커밋 직후 `git log --oneline -1`
-    ![alt text](commit.png)
+    ![alt text](screenshot/commit.png)
+
 - amend 실행 후 다시 `git log --oneline -1`
-    ![alt text](amend_commit.png)
+    ![alt text](screenshot/amend_commit.png)
 
 ### 결과
 - 가장 최근 커밋 메시지가 수정된다.
@@ -81,11 +82,11 @@ git log --oneline -2
 
 ### 캡처 포인트
 - reset 전 `git log --oneline -2`
-    ![alt text](before_reset.png)
+    ![alt text](screenshot/before_reset.png)
 - reset 후 `git status`
-    ![alt text](after_status.png)
+    ![alt text](screenshot/after_status.png)
 - reset 후 `git log --oneline -2`
-    ![alt text](after_reset.png)
+    ![alt text](screenshot/after_reset.png)
 
 ### 결과
 - 가장 최근 커밋은 취소된다.
@@ -124,11 +125,11 @@ git revert <커밋해시>
 
 ### 캡처 포인트
 - revert 전 `git log --oneline -3`
-    ![alt text](before_revert.png)
+    ![alt text](screenshot/before_revert.png)
 
 - revert 후 `git log --oneline -4`
-    ![alt text](before_revert_commit.png)
-    ![alt text](after_revert.png)
+    ![alt text](screenshot/after_revert.png)
+    ![alt text](screenshot/before_revert_commit.png)
 
 ### 결과
 - 기존 커밋은 유지된다.
@@ -164,11 +165,11 @@ git stash list
 
 ### 캡처 포인트
 - stash 전 `git status`
-    ![alt text](before_stash.png)
+    ![alt text](screenshot/before_stash.png)
 - stash 후 `git status`
-    ![alt text](after_stash.png)
+    ![alt text](screenshot/after_stash.png)
 - stash 후 `git stash list`
-    ![alt text](after_stash_list.png)
+    ![alt text](screenshot/after_stash_list.png)
 
 ### 결과
 - 현재 작업 내용이 stash에 저장된다.
@@ -202,10 +203,11 @@ git stash list
 
 ### 캡처 포인트
 - pop 전 `git stash list`
+    ![alt text](screenshot/after_stash_list.png)
 - pop 후 `git status`
-    ![alt text](after_stash_pop.png)
+    ![alt text](screenshot/after_stash_pop.png)
 - pop 후 `git stash list`
-    ![alt text](after_stash_pop_list.png)
+    ![alt text](screenshot/after_stash_pop_list.png)
 
 ### 결과
 - 가장 최근 stash 내용이 작업 디렉터리에 복원된다.
