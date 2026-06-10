@@ -147,6 +147,8 @@ git revert <커밋해시>
 
 ### 실습 흐름
 1. 파일을 수정한 뒤 아직 커밋하지 않은 상태를 만든다.
+    - 파일이 staged(git add) 상태일 때 stash 할 수 있다.
+    - untracked file 까지 같이 stash 하고싶을 경우, `git stash -m "메시지" -u` 옵션을 주면된다.
 2. `git status`로 변경 파일을 확인한다.
 3. `git stash`로 작업 내용을 임시 저장한다.
 4. 다시 `git status`로 작업 디렉터리가 정리되었는지 확인한다.
@@ -162,8 +164,11 @@ git stash list
 
 ### 캡처 포인트
 - stash 전 `git status`
+    ![alt text](before_stash.png)
 - stash 후 `git status`
+    ![alt text](after_stash.png)
 - stash 후 `git stash list`
+    ![alt text](after_stash_list.png)
 
 ### 결과
 - 현재 작업 내용이 stash에 저장된다.
@@ -198,7 +203,9 @@ git stash list
 ### 캡처 포인트
 - pop 전 `git stash list`
 - pop 후 `git status`
+    ![alt text](after_stash_pop.png)
 - pop 후 `git stash list`
+    ![alt text](after_stash_pop_list.png)
 
 ### 결과
 - 가장 최근 stash 내용이 작업 디렉터리에 복원된다.
