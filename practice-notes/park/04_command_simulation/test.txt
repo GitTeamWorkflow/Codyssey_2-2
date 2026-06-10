@@ -1,3 +1,6 @@
 test
 test1
 stash test
+stash test apply
+stash test message
+stash message test 2
