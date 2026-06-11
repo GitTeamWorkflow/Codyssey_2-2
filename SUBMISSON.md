@@ -7,10 +7,14 @@
 ## Member PRs
 - <박범규>
   - PR: <https://github.com/GitTeamWorkflow/Codyssey_2-2/issues/5>, <https://github.com/GitTeamWorkflow/Codyssey_2-2/issues/7>, <https://github.com/GitTeamWorkflow/Codyssey_2-2/issues/14>, <https://github.com/GitTeamWorkflow/Codyssey_2-2/issues/16>, <https://github.com/GitTeamWorkflow/Codyssey_2-2/issues/18>, <https://github.com/GitTeamWorkflow/Codyssey_2-2/issues/20>, <https://github.com/GitTeamWorkflow/Codyssey_2-2/issues/28>, <https://github.com/GitTeamWorkflow/Codyssey_2-2/issues/29>, <https://github.com/GitTeamWorkflow/Codyssey_2-2/issues/37>, <https://github.com/GitTeamWorkflow/Codyssey_2-2/issues/42>
+
+  - Review : <https://github.com/GitTeamWorkflow/Codyssey_2-2/pull/38>
 - <손보람>
   - PR: <https://github.com/GitTeamWorkflow/Codyssey_2-2/issues/3>, <https://github.com/GitTeamWorkflow/Codyssey_2-2/issues/9>, <https://github.com/GitTeamWorkflow/Codyssey_2-2/issues/12>, <https://github.com/GitTeamWorkflow/Codyssey_2-2/issues/13>, <https://github.com/GitTeamWorkflow/Codyssey_2-2/issues/24>, <https://github.com/GitTeamWorkflow/Codyssey_2-2/issues/26> 
 - <이초롱>
   - PR: <https://github.com/GitTeamWorkflow/Codyssey_2-2/issues/11>, <https://github.com/GitTeamWorkflow/Codyssey_2-2/issues/34>, <https://github.com/GitTeamWorkflow/Codyssey_2-2/issues/39>
+  
+  - Review: <https://github.com/GitTeamWorkflow/Codyssey_2-2/pull/36#discussion_r3394526324>
 - <임종한>
   - PR: <https://github.com/GitTeamWorkflow/Codyssey_2-2/issues/41>, <https://github.com/GitTeamWorkflow/Codyssey_2-2/issues/44>
 
