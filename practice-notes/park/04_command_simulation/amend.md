@@ -1,6 +1,6 @@
-# git ammend Simulation
+# git amend Simulation
 
-## git ammend
+## git amend
 - 이전 커밋에 변경사항을 적용하고 싶을 때 사용
 
 ## 시나리오 1
@@ -56,14 +56,14 @@ Date:   Wed Jun 10 17:48:56 2026 +0900
 ## 시나리오 2 
 
 1. commit 후 해당 파일을 추가 수정했다.
-- 현재 commit 명 : feat: learn ammend
+- 현재 commit 명 : feat: learn amend
 2. 동일한 commit에 변경사항을 적용하려한다.
 ```bash
-pbk@park/04_command_simulation# git add ammend.md 
+pbk@park/04_command_simulation# git add amend.md 
 ```
 ```bash
 pbk@park/04_command_simulation# git commit --amend --no-edit
-[feat/37-park-command-simulation e3723da] feat: learn ammend
+[feat/37-park-command-simulation e3723da] feat: learn amend
  Date: Wed Jun 10 18:04:17 2026 +0900
  1 file changed, 54 insertions(+)
 ```
@@ -74,7 +74,7 @@ commit e3723dafc04192dfa2b02ab9540e6b97cb02d312 (HEAD -> feat/37-park-command-si
 Author: pbk98 <bumkyu8425@naver.com>
 Date:   Wed Jun 10 18:04:17 2026 +0900
 
-    feat: learn ammend
+    feat: learn amend
 
 commit 8d0ed8943cf86bd148d888bee9dd70745b2fb27f
 Author: pbk98 <bumkyu8425@naver.com>
