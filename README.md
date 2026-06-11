@@ -104,7 +104,7 @@ main 브랜치에 merge
 
 작업을 시작하기 전 Issue를 생성한다.
 
-Issue에는 작업 목적, 작업 내용, 담당자, 완료 조건을 작성한다.
+Issue에는 작업 목적을 작성한다.
 
 ---
 
@@ -114,18 +114,18 @@ Issue에는 작업 목적, 작업 내용, 담당자, 완료 조건을 작성한�
 
 | 태그           | 의미         |
 | ------------ | ---------- |
-| `[Feat]`     | 기능 추가      |
-| `[Fix]`      | 오류 수정      |
-| `[Docs]`     | 문서 수정      |
-| `[Refactor]` | 코드 구조 개선   |
-| `[Chore]`    | 설정 및 기타 작업 |
+| `feat:`     | 기능 추가      |
+| `fix:`      | 오류 수정      |
+| `docs:`     | 문서 수정      |
+| `refactor:` | 코드 구조 개선   |
+| `chore:`    | 설정 및 기타 작업 |
 
 예시:
 
 ```bash
-git commit -m "[Docs] Add conflict resolution record"
-git commit -m "[Fix] Resolve merge conflict"
-git commit -m "[Feat] Add calculator function"
+git commit -m "docs: Add conflict resolution record"
+git commit -m "fix: Resolve merge conflict"
+git commit -m "feat: Add calculator function"
 ```
 
 ---
