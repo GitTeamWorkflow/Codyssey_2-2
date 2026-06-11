@@ -15,9 +15,14 @@ def minus(a, b):
     
 print(minus(2, 122))
 
-# 더하기
-def plus(c, d):
-    result = c + d
+# 곱하기
+def multiple(f, u):
+    result = f * u
     return result
     
-print(plus(2, 122))
+print(multiple(2, 122))
+
+# 나머지
+def mod(c, d):
+    result = c % d
+    return result
